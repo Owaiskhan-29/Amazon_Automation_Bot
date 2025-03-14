@@ -12,12 +12,12 @@ These scripts use **Selenium WebDriver** to interact with Amazon's website, mimi
 ---
 
 ## 🚀 Features
-✅ **Searches for a product** on Amazon.in
-✅ **Selects the first available product** from the search results
-✅ **Handles multiple product selectors** to find the best match
-✅ **Attempts to add the product to the cart** using various strategies
-✅ **(For Login Script)** Logs into Amazon before executing the automation
-✅ **Bypasses bot detection** using Chrome DevTools Protocol (CDP) modifications
+✅ **Open Amazon’s homepage.**  
+✅ **Search for a product (e.g., "iPhone").**  
+✅ **Select the first product from the search results.**  
+✅ **Extract and print the product title and price.**  
+✅ **Add the product to the cart.**  
+✅ **Validate that the correct product was added to the cart successfully.**  
 
 ---
 
@@ -56,4 +56,3 @@ driver = webdriver.Chrome(ChromeDriverManager().install())
   python amazon_automation_bot_after_login
   ```
 
----
