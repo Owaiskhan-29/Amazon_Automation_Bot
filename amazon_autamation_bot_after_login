@@ -24,9 +24,9 @@ try:
             EC.element_to_be_clickable((By.ID, "nav-link-accountList"))
         )
         sign_in_button.click()
-        print("✅ Clicked on Sign-in button.")
+        print("Clicked on Sign-in button.")
     except Exception as e:
-        print("🚨 Error clicking Sign-in button:", e)
+        print(" Error clicking Sign-in button:", e)
         driver.quit()
         exit()
 
@@ -37,9 +37,9 @@ try:
         )
         email_input.send_keys(AMAZON_EMAIL)
         email_input.send_keys(Keys.RETURN)
-        print("✅ Entered email and clicked Next.")
+        print("Entered email and clicked Next.")
     except Exception as e:
-        print("🚨 Error entering email:", e)
+        print(" Error entering email:", e)
         driver.quit()
         exit()
 
@@ -59,9 +59,9 @@ try:
         )
         password_input.send_keys(AMAZON_PASSWORD)
         password_input.send_keys(Keys.RETURN)
-        print("✅ Entered password and clicked Login.")
+        print(" Entered password and clicked Login.")
     except Exception as e:
-        print("🚨 Error entering password:", e)
+        print(" Error entering password:", e)
         driver.quit()
         exit()
 
@@ -70,21 +70,21 @@ try:
         otp_input = WebDriverWait(driver, 5).until(
             EC.presence_of_element_located((By.ID, "auth-mfa-otpcode"))
         )
-        otp_code = input("🔒 Enter the OTP received on your phone/email: ")
+        otp_code = input("Enter the OTP received on your phone/email: ")
         otp_input.send_keys(otp_code)
         otp_input.send_keys(Keys.RETURN)
-        print("✅ OTP entered successfully.")
+        print("OTP entered successfully.")
     except:
-        print("✅ No OTP required, proceeding...")
+        print(" No OTP required, proceeding...")
 
     # Step 7: Verify successful login
     try:
         account_name = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.ID, "nav-link-accountList-nav-line-1"))
         ).text
-        print(f"✅ Successfully logged in as: {account_name}")
+        print(f" Successfully logged in as: {account_name}")
     except:
-        print("❌ Login failed! Please check your credentials.")
+        print("Login failed! Please check your credentials.")
         driver.quit()
         exit()
 
@@ -95,9 +95,9 @@ try:
         )
         search_box.send_keys("iPhone")
         search_box.send_keys(Keys.RETURN)
-        print("✅ Searched for 'iPhone'.")
+        print(" Searched for 'iPhone'.")
     except Exception as e:
-        print("🚨 Error searching for product:", e)
+        print("Error searching for product:", e)
         driver.quit()
         exit()
 
@@ -112,9 +112,9 @@ try:
         driver.execute_script("arguments[0].scrollIntoView();", first_product)  # Scroll into view
         time.sleep(2)  # Short delay to let the page stabilize
         first_product.click()
-        print("✅ Selected the first product.")
+        print("Selected the first product.")
     except Exception as e:
-        print("🚨 Error selecting the first product:", e)
+        print("Error selecting the first product:", e)
         driver.quit()
         exit()
 
@@ -131,10 +131,10 @@ try:
         except:
             product_price = "Price not available"
 
-        print(f"📌 Product Title: {product_title}")
-        print(f"💰 Product Price: {product_price}")
+        print(f"Product Title: {product_title}")
+        print(f" Product Price: {product_price}")
     except Exception as e:
-        print("🚨 Error extracting product details:", e)
+        print(" Error extracting product details:", e)
 
     # Step 11: Add to cart
     try:
@@ -142,9 +142,9 @@ try:
             EC.element_to_be_clickable((By.ID, "add-to-cart-button"))
         )
         add_to_cart_button.click()
-        print("✅ Added product to the cart.")
+        print("Added product to the cart.")
     except Exception as e:
-        print("🚨 Error adding to cart:", e)
+        print("Error adding to cart:", e)
         driver.quit()
         exit()
 
@@ -154,23 +154,23 @@ try:
             EC.element_to_be_clickable((By.ID, "nav-cart"))
         )
         cart_button.click()
-        print("✅ Opened the cart.")
+        print(" Opened the cart.")
 
         cart_product_title = WebDriverWait(driver, 10).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "span.sc-product-title"))
         ).text
 
         if product_title[:30] in cart_product_title:  # Partial match validation
-            print("✅ Product successfully added to cart!")
+            print("Product successfully added to cart!")
         else:
-            print("❌ Product validation failed!")
+            print("Product validation failed!")
 
     except Exception as e:
-        print("🚨 Error validating cart:", e)
+        print(" Error validating cart:", e)
 
 except Exception as e:
-    print("🚨 Unexpected Error:", e)
+    print("Unexpected Error:", e)
 
 finally:
     driver.quit()
-    print("✅ Browser closed.")
+    print(" Browser closed.")
